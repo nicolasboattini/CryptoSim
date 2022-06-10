@@ -1,12 +1,12 @@
 const mysql = require("mysql"); //se requiere el paquete mysql
 require("dotenv").config();
 
-/*const pool = mysql.createConnection({
+const pool = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
-  database: "chat",
-});*/ // Crea la conexion a la base de datos utilizando los datos de datos
+  database: "cryptosim",
+}); // Crea la conexion a la base de datos utilizando los datos de datos
 
 pool.connect((err, connection) => {
   //Probar si se pierde la conexion
