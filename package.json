@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "chartist": "^0.11.4",
     "coingecko-api": "^1.0.10",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",

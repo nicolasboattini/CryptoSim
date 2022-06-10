@@ -6,28 +6,33 @@ const CoinGeckoClient = new CoinGecko();
 
 //3. Make calls
 var predict = async() => {
-  let data = await CoinGeckoClient.ping();
   const datos =[]
   const Objeto = {
     days: '120',
     vs_currency: 'usd'
   }
   let data2 = await CoinGeckoClient.coins.fetchMarketChart('bitcoin', Objeto);
-  console.log("Textazo");
-  for (var i = 0; i < 10; i++) {
+  for (var i = 0; i < 120; i++) {
     datos[i]= data2.data.prices[i][1];
  }
  let sts = statistics(datos);
- /*for (var i = 10; i < 20; i++) {
-  if(datos[i-2]>datos[i-1]){
-    datos[i]= 1 -()+random
-  }else
-}*/
-  
-  console.log(datos);
-  
-
+ for (var k = 120; k < 240; k++) {
+  if(datos[k-2]>datos[k-1]){
+    datos[k]= datos[k-1] -(datos[k-1]-sts[0])*0.03+((Math.random())*100-50);
+  }else{
+    datos[k]= datos[k-1]+(sts[1]-datos[k-1])*0.03+((Math.random())*100-50);
+  }
+ } 
+ return datos;
 };
+
+async function calcular_meses(datos,tarjeta_consumo,costokwh,tarjeta_hasheo){
+
+
+
+
+
+}
 
 function statistics(data){
   let max = -1; let min = Number.MAX_VALUE; let total = 0;
@@ -40,5 +45,11 @@ function statistics(data){
  return ret
 }
 
-predict();
+async function main(){
+  console.log(await predict());
+  //console.log(await calcular_meses(datos, tarjeta.consumo, costokwh,tarjeta.hasheo));//calcula el tiempo en meses que tarda
+
+}
+
+main();
 
