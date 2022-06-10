@@ -1,13 +1,53 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 
 <head>
-  <title>Express</title>
-  <link rel="stylesheet" href="/stylesheets/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width-device-width, initial-scale=1">
+  <title>CryptoSim</title>  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="./stylesheets/style.css">
 </head>
 
 <body>
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <header>
+    <h1 class="text-center">CryptoSim</h1>
+  </header>  
+    <div id="caja" class="d-flex flex-row">
+      <div class="p-4">
+        <h1>Formulariooooooooo</h1>
+        <form>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Tarjeta Gráfica</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>RTX</option>
+              <option>GTX</option>
+              <option>RX</option>
+              <option>XT</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Criptomoneda</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>BTC</option>
+              <option>ETH</option>
+              <option>TRX</option>
+              <option>ADA</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" type="submit">Simular</button>
+        </form>
+              
+      </div>
+      <div class="p-4">
+        <h1>Grafico</h1>
+      </div>
+    </div>
+  <footer>
+    <h3>The AO</h3>
+  </footer>
+  
 </body>
 
 </html>
