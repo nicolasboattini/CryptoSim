@@ -34,7 +34,14 @@
         </span></button>
     </div>
 
-  </header>  
+  </header>
+  <h1>Binding MySQL data to a DropDownList</h1>
+    <label>Name: </label>
+   <select>
+      <% for (const i in dropdownVals) { %>
+        <option value="<%= dropdownVals[i].idTarjeta_Grafica %>"> <%= dropdownVals[i].marca %> </option>
+    <% } %>
+</select>  
 
     <!--<div id="caja" class="container">
       <div class="form_container">

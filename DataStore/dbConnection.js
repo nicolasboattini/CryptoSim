@@ -1,22 +1,11 @@
-//const mysql = require("mysql"); //se requiere el paquete mysql
-require("dotenv").config();
-
-exports.dbConnection = function () {
-  var dbConfig = {
-    host: "localhost",
-    user: "root",
-    password: "ale24853NIC666",
-    database: "cryptosim",
-  };
-  return dbConfig;
-};
-/*
+const mysql = require('mysql');
+const dotenv = require('dotenv');
 
 const pool = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
-  database: "cryptosim",
+  db: 'cryptosim'
 }); // Crea la conexion a la base de datos utilizando los datos de datos
 
 pool.connect((err, connection) => {
@@ -36,4 +25,6 @@ pool.connect((err, connection) => {
   }
 });
 
-module.exports = pool;*/
+module.exports = pool;
+
+
