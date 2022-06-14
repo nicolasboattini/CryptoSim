@@ -1,5 +1,16 @@
-const mysql = require("mysql"); //se requiere el paquete mysql
+//const mysql = require("mysql"); //se requiere el paquete mysql
 require("dotenv").config();
+
+exports.dbConnection = function () {
+  var dbConfig = {
+    host: "localhost",
+    user: "root",
+    password: "ale24853NIC666",
+    database: "cryptosim",
+  };
+  return dbConfig;
+};
+/*
 
 const pool = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -25,4 +36,4 @@ pool.connect((err, connection) => {
   }
 });
 
-module.exports = pool;
+module.exports = pool;*/

@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-
 body {  
   font: 14px 'Roboto', sans-serif;
   margin: 0;
@@ -31,6 +30,4 @@ header {
 .result_container {
     border: 3px Solid rgb(98, 0, 255) ;
     padding: 300px;
-    }
-
-    
+    }    
