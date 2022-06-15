@@ -6,6 +6,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var cors = require('cors');
 var bodyParser = require('body-parser');
+var pool = require('./DataStore/dbConnection');
+const dotenv = require('dotenv');
 
 
 var express = require('express');
@@ -18,9 +20,10 @@ var server = {
 
 app.use(logger('dev'));
 
-//app.set('view engine', 'ejs'); // view engine set up, default is HTML 
-app.use(express.static(path.join(__dirname, 'views'))); // static path for views in ./views
-// app.set('public', path.join(__dirname, 'views')); // set up static path stablished 
+app.set('view engine', 'ejs'); // view engine set up, default is HTML 
+
+app.use(express.static(path.join(__dirname, 'public'))); // set up public folder for static files
+//app.set('public', path.join(__dirname, 'views')); // set up static path stablished 
 
 
 //use modules 
@@ -43,7 +46,26 @@ app.use('/index', indexRouter);
 app.use('/users', usersRouter);
 // router user input
 app.get('/', function(req, res) {
-  res.sendFile(path.resolve(__dirname,'views') + '/index.html');
+
+  var model = {
+    tarjetaGrafica: []
+}
+  pool.getConnection(function(err, connection) {
+  if (err) throw err; // not connected!
+ 
+  // Use the connection
+  connection.query('SELECT idTarjeta_Grafica, modelo, serie, marca  FROM tarjeta_grafica', function (error, results, fields) {
+    model.tarjetaGrafica=results;
+    // When done with the connection, release it.
+    connection.release();
+    res.render('pages/index', model);
+ 
+    // Handle error after the release.
+    if (error) throw error;
+ 
+    // Don't use the connection here, it has been returned to the pool.
+  });
+});
 });
 // starting the server
 app.listen( server.port, () => console.log(`Server started, listening port: ${server.port}`));

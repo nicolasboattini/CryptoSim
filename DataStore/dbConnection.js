@@ -1,14 +1,15 @@
 const mysql = require('mysql');
 const dotenv = require('dotenv');
 
-const pool = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  db: 'cryptosim'
-}); // Crea la conexion a la base de datos utilizando los datos de datos
+const pool = mysql.createPool({
+  connectionLimit : 10,
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  database: 'cryptosim'
+}); // Crea la conexion a la base de datos utilizando los datos de la variable de entorno
 
-pool.connect((err, connection) => {
+/*pool.connect((err, connection) => {
   //Probar si se pierde la conexion
   if (err) {
     if (err.code === "PROTOCOL_CONNECTION_LOST") {
@@ -23,7 +24,7 @@ pool.connect((err, connection) => {
   } else {
     console.log("DB is Connected");
   }
-});
+});*/
 
 module.exports = pool;
 

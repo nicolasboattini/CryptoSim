@@ -6,7 +6,6 @@ function func(e) {
   document.getElementById("costoKW").addEventListener('click', func);
   document.getElementById("costoKW").addEventListener('keyup', function(e){
     e.target.click()})
-
 //Gráfico
 
 var xyValues = [
@@ -43,3 +42,4 @@ const myChart = new Chart(ctx, {
     },
   },
 })
+
