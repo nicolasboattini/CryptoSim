@@ -7,8 +7,6 @@ var usersRouter = require('./routes/users');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var pool = require('./DataStore/dbConnection');
-const dotenv = require('dotenv');
-
 
 var express = require('express');
 var app = express();
@@ -54,16 +52,11 @@ app.get('/', function(req, res) {
   if (err) throw err; // not connected!
  
   // Use the connection
-  connection.query('SELECT idTarjeta_Grafica, modelo, serie, marca  FROM tarjeta_grafica', function (error, results, fields) {
+  connection.query('SELECT idTarjeta_Grafica, modelo, serie, marca, consumo, frecuencia_de_hasheo, precio  FROM tarjeta_grafica', function (error, results, fields) {
     model.tarjetaGrafica=results;
-    // When done with the connection, release it.
     connection.release();
     res.render('pages/index', model);
- 
-    // Handle error after the release.
     if (error) throw error;
- 
-    // Don't use the connection here, it has been returned to the pool.
   });
 });
 });

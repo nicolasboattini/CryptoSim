@@ -1,11 +1,11 @@
 $(document).ready(function(){
-  $('.dropdown-menu.bg-dark.text-white.w-100 li').click(function(){
-    $('#selected').text($(this).text());
+  $('.dropdown-menu.dropdown-menu-dark.dropdown-menu-end.dropdown-menu-lg-start a').click(function(){
+    $('#selectedGrafica').text($(this).text());
     });
 });
 
 $(document).ready(function(){
-  $('.dropdown-menu.bg-dark.text-white.w-99 li').click(function(){
+  $('.dropdown-menu.dropdown-menu-dark.w-99 a').click(function(){
     $('#selectedCripto').text($(this).text());
     });
 });

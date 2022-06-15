@@ -26,9 +26,9 @@
       <h1 style="margin-left: 130px;"> CryptoSim</h1>
     </div>
 
-    <div class="col-1 ">
+    <div class="col-1 align-self-center">
       <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
-        class="btn btn-primary btn-sm py-0 mt-2 rounded-4"><span class="p-0 mt-1 material-symbols-outlined"
+        class="btn btn-primary btn-sm py-0 mt-2 rounded-4"><label >Login</label><span class="p-0 mt-1 material-symbols-outlined"
           style="font-size: 30px;">
           account_circle
         </span></button>
@@ -43,15 +43,15 @@
           <div class="row justify-content-evenly py-4">
             <label class="col-6 col-md-2"><input class="form-check-input mt-0" type="checkbox"
                 value="nvidia" />Nvidia</label>
-            <label class="col-6 col-md-2"><input class="mx-1 form-check-input mt-0" type="checkbox"
+            <label class="col-6 col-md-2"><input class="form-check-input mt-0" type="checkbox"
                 value="amd" />AMD</label>
-            <label class="col-6 col-md-2"><input class="mx-1 form-check-input mt-0" type="checkbox"
+            <label class="col-6 col-md-2"><input class="form-check-input mt-0" type="checkbox"
                 value="gtx" />GTX</label>
-            <label class="col-6 col-md-2"><input class="mx-1 form-check-input mt-0" type="checkbox"
+            <label class="col-6 col-md-2"><input class="form-check-input mt-0" type="checkbox"
                 value="rtx" />RTX</label>
-            <label class="col-6 col-md-2"><input class="mx-1 form-check-input mt-0" type="checkbox"
+            <label class="col-6 col-md-2"><input class="form-check-input mt-0" type="checkbox"
                 value="gt" />GT</label>
-            <label class="col-6 col-md-2"><input class="mx-1 form-check-input mt-0" type="checkbox"
+            <label class="col-6 col-md-2"><input class="form-check-input mt-0" type="checkbox"
                 value="rx" />RX</label>
           </div>          
           <div class="row py-4">
@@ -60,36 +60,39 @@
                 <a class="btn btn-primary dropdown-toggle  rounded-4" href="#" role="button" 
                 id="dropdownMenuLink" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <span id="selected">Tarjeta Gráfica</span><span class="caret"></span></a>             
+                  <span id="selectedGrafica">Tarjetas Gráficas</span><span class="caret"></span></a>             
                 
-                <ul class="dropdown-menu bg-dark text-white w-100">
+                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end dropdown-menu-lg-start">
                   <% tarjetaGrafica.forEach(function(t) { %>
-                    <li class="mx-2" 
+                    <li><a href="#" class="dropdown-item" href="#"
                       data-id="<%= t.idTarjeta_Grafica %>" 
                       data-consumo="<%= t.consumo %>" 
                       data-frecuenciaDeHasheo="<%= t.frecuencia_de_hasheo %>"
                       data-precio="<%= t.precio %>">
-                      <%= t.modelo %> <%= t.marca %></li>                 
+                      <%= t.modelo %> <%= t.serie %> <%= t.marca %></a></li>                 
                    <% }); %>
                 </ul>
+                <div class="col-4">
+                  <input class="bg-primary text-white rounded-4 form-control" type="number" value="1"
+                    min="1" />
+                </div>
               </div>
             </div>
             <div class="col-3">
-              <input class="bg-primary text-white rounded-4 form-control btn-outline-primary" type="number" value="1"
-                min="1" />
+              
             </div>
             <div class="col-6 py-4">
               
               <div class="btn-group w-100 text-start">
                 <a class="btn btn-primary dropdown-toggle  rounded-4" href="#" role="button" 
                 id="dropdownMenuLink" data-bs-toggle="dropdown"
-                  aria-expanded="false">
+                  aria-expanded="false" data-bs-display="static">
                   <span id="selectedCripto">Criptomoneda</span><span class="caret"></span></a>
-                <ul class="dropdown-menu bg-dark text-white w-99">
-                  <li class="mx-2">BTC</li>
-                  <li class="mx-2">ETH</li>
-                  <li class="mx-2">TRX</li>
-                  <li class="mx-2">ADA</li>
+                <ul class="dropdown-menu dropdown-menu-dark w-99" aria-labelledby="dropdownMenuButton2">                  
+                  <li><a class="dropdown-item " value="bitcoin" href="#">BTC</a></li>
+                  <li><a class="dropdown-item " value="ethereum"href="#">ETH</a></li>
+                  <li><a class="dropdown-item " value="tron"href="#">TRX</a></li>
+                  <li><a class="dropdown-item " value="cardano"href="#">ADA</a></li>                  
                 </ul>
               </div>
             </div>

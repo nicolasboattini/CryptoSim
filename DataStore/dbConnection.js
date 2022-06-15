@@ -1,11 +1,11 @@
 const mysql = require('mysql');
-const dotenv = require('dotenv');
+require('dotenv').config()
 
 const pool = mysql.createPool({
   connectionLimit : 10,
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
+  host: process.env.DB_HOST, 
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
   database: 'cryptosim'
 }); // Crea la conexion a la base de datos utilizando los datos de la variable de entorno
 
