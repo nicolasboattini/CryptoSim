@@ -1,3 +1,15 @@
+$(document).ready(function(){
+  $('.dropdown-menu.bg-dark.text-white.w-100 li').click(function(){
+    $('#selected').text($(this).text());
+    });
+});
+
+$(document).ready(function(){
+  $('.dropdown-menu.bg-dark.text-white.w-99 li').click(function(){
+    $('#selectedCripto').text($(this).text());
+    });
+});
+
 function func(e) {
     if(e.target.value==e.target.getAttribute("min")){
     e.target.value="";
@@ -6,6 +18,8 @@ function func(e) {
   document.getElementById("costoKW").addEventListener('click', func);
   document.getElementById("costoKW").addEventListener('keyup', function(e){
     e.target.click()})
+
+
 //Gráfico
 
 var xyValues = [

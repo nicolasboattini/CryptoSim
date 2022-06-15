@@ -35,45 +35,7 @@
     </div>
 
   </header>
-  
-
-    <!--<div id="caja" class="container">
-      <div class="form_container">
-        <h1 class="text-center">Complete Aquí</h1>
-        <form>
-          <div class="form-group">
-            <select class="form-select btn-outline-primary form-select-lg mb-3" aria-label=".form-select-lg example">
-              <option selected>Escoja Tarjeta Gráfica</option>
-              <option value="1">ESTA ES LA TARJETA MÁS LARGA Q VAS A VER</option>
-              <option value="2">ETH</option>
-              <option value="3">TRX</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <select class="form-select btn-outline-primary form-select-lg mb-3" aria-label=".form-select-lg example">
-              <option selected>Escoja Criptomoneda</option>
-              <option value="1">BTC</option>
-              <option value="2">ETH</option>
-              <option value="3">TRX</option>
-            </select> 
-          </div>
-          <div class="form-group">            
-            <label for="costoKW"></label>            
-            <input type="number" class="form-control btn-outline-primary form-control-lg mb-3" id="costoKW" min="0" placeholder="Ingrese su Costo KW/h" >
-            <label for="costoKW"></label>            
-          </div>
-          <div class="text-center">
-            <button class="btn btn-primary btn-lg mb-3" id="simBtn" type="button">Simular</button>                        
-          </div>
-        </form>              
-      </div>
-
-      <div class="result_container">
-        <h1>Bind DropDownList</h1>
-        <label>Name: </label>
-         
-      </div>
-    </div>-->
+    
   <div id="caja" class="container">
     <div class="row ">       
       <form class="col-12 col-md-5">
@@ -94,11 +56,12 @@
           </div>          
           <div class="row py-4">
             <div class="col-6 ">              
-              <div class="btn-group w-100 text-start">
-                <button type="button" class="btn btn-primary dropdown-toggle  rounded-4" data-bs-toggle="dropdown"
+              <div class="dropdown btn-group w-100 text-start">
+                <a class="btn btn-primary dropdown-toggle  rounded-4" href="#" role="button" 
+                id="dropdownMenuLink" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  Tarjeta Gráfica
-                </button>
+                  <span id="selected">Tarjeta Gráfica</span><span class="caret"></span></a>             
+                
                 <ul class="dropdown-menu bg-dark text-white w-100">
                   <% tarjetaGrafica.forEach(function(t) { %>
                     <li class="mx-2" 
@@ -106,7 +69,7 @@
                       data-consumo="<%= t.consumo %>" 
                       data-frecuenciaDeHasheo="<%= t.frecuencia_de_hasheo %>"
                       data-precio="<%= t.precio %>">
-                      <%= t.modelo %> <%= t.marca %> </li>                 
+                      <%= t.modelo %> <%= t.marca %></li>                 
                    <% }); %>
                 </ul>
               </div>
@@ -116,19 +79,13 @@
                 min="1" />
             </div>
             <div class="col-6 py-4">
-              <!-- <select class="select-rounded text-white form-select bg-dark">
-                <option selected disabled>Criptomoneda</option>
-                <option value="1">BTC</option>
-                <option value="1">ETH</option>
-                <option value="1">TRX</option>
-                <option value="1">ADA</option>
-              </select> -->
+              
               <div class="btn-group w-100 text-start">
-                <button type="button" class="btn btn-primary dropdown-toggle rounded-4" data-bs-toggle="dropdown"
+                <a class="btn btn-primary dropdown-toggle  rounded-4" href="#" role="button" 
+                id="dropdownMenuLink" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  Criptomoneda
-                </button>
-                <ul class="dropdown-menu bg-dark text-white w-100">
+                  <span id="selectedCripto">Criptomoneda</span><span class="caret"></span></a>
+                <ul class="dropdown-menu bg-dark text-white w-99">
                   <li class="mx-2">BTC</li>
                   <li class="mx-2">ETH</li>
                   <li class="mx-2">TRX</li>
@@ -195,7 +152,7 @@
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-  <script  src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
   <script src="/javascripts/frontend.js"></script>
