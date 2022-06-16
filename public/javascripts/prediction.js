@@ -5,13 +5,13 @@ const CoinGecko = require('coingecko-api');
 const CoinGeckoClient = new CoinGecko();
 
 //3. Make calls
-var predict = async() => {
+async function predict(cmoneda){
   const datos =[]
   const Objeto = {
     days: '120',
     vs_currency: 'usd'
   }
-  let data2 = await CoinGeckoClient.coins.fetchMarketChart('bitcoin', Objeto);
+  let data2 = await CoinGeckoClient.coins.fetchMarketChart(cmoneda, Objeto);
   for (var i = 0; i < 120; i++) {
     datos[i]= data2.data.prices[i][1];
  }
@@ -26,12 +26,28 @@ var predict = async() => {
  return datos;
 };
 
-async function calcular_meses(datos,tarjeta_consumo,costokwh,tarjeta_hasheo){
-
-
-
-
-
+async function calcular_meses(datos,tarjeta_consumo,costokwh,tarjeta_hasheo, tarjeta_costo){
+    //Primero calculamos cuanto de la criptomoneda calcula    
+    var cdiario = tarjeta_consumo*costokwh*24;//costo diario de la electricidad
+    var d = 0; var datavg = 0;var ganancia = -tarjeta_costo;
+    //var q=rendimiento bruto
+    for(var k=120;k<240;k++){
+      datavg = datavg + datos[k];
+    }
+    datavg = datavg/120;
+    do{
+      d++;
+      if (d<120){
+        ganancia = ganancia +((q*datos[i+120])-cdiario);
+      }else{
+        ganancia = ganancia +(q*datavg-cdiario);
+      }
+    }while(ganancia<0 || d > 3600);
+    if (d<3601){
+      return d/30;
+    }else{
+      return 'Nunca'
+    }
 }
 
 function statistics(data){
@@ -46,8 +62,14 @@ function statistics(data){
 }
 
 async function main(){
-  console.log(await predict());
-  //console.log(await calcular_meses(datos, tarjeta.consumo, costokwh,tarjeta.hasheo));//calcula el tiempo en meses que tarda
+  data3 = await predict('bitcoin');
+  console.log(data3);
+  console.log('adasdasdasd');
+  console.log(await calcular_meses(data3, 0.409, 0.05,tarjeta.hasheo, 2000));//calcula el tiempo en meses que tarda
+  //El consumo esta en kw
+  //Costo kwh corrientes: 6,2905 = 0.05 usd
+  //Costo por hora = consumo*costokwh
+  //Costo por mes = chora*24*30 (asumiendo meses de 30 días)
 
 }
 
