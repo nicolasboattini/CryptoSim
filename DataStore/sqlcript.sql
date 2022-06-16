@@ -60,8 +60,8 @@ ENGINE = InnoDB;
 --`idTarjeta_Grafica`, `modelo`  `serie` `marca`  `consumo`  `frecuencia_de_hasheo`  `precio`
 
 
-INSERT INTO cryptosim.tarjeta_grafica VALUES(1,'NVIDIA','GeForce RTX','3090 Ti', 0.329,128,2000);--confirmado
-INSERT INTO cryptosim.tarjeta_grafica VALUES(2, 'NVIDIA','GeForce RTX','3090', 0.290,122,1800);--confirmado
-INSERT INTO cryptosim.tarjeta_grafica VALUES(3, 'NVIDIA','Quadro RTX','A5000', 0.210,99.67,2500);--confirmado
-INSERT INTO cryptosim.tarjeta_grafica VALUES(4, 'AMD','Radeon RX','6800 XT', 0.104,63.2,1000);--confirmado
-INSERT INTO cryptosim.tarjeta_grafica VALUES(5, 'AMD','RX','6900XT', 0.143,62.9,2000);--confirmado
+INSERT INTO cryptosim.tarjeta_grafica VALUES(1,'NVIDIA','GeForce RTX','3090 Ti', 0.329,128,2000);--insertamos datos de tarjetas gráficas extraídos de páginas especializadas
+INSERT INTO cryptosim.tarjeta_grafica VALUES(2, 'NVIDIA','GeForce RTX','3090', 0.290,122,1800);
+INSERT INTO cryptosim.tarjeta_grafica VALUES(3, 'NVIDIA','Quadro RTX','A5000', 0.210,99.67,2500);-
+INSERT INTO cryptosim.tarjeta_grafica VALUES(4, 'AMD','Radeon RX','6800 XT', 0.104,63.2,1000);
+INSERT INTO cryptosim.tarjeta_grafica VALUES(5, 'AMD','RX','6900XT', 0.143,62.9,2000);

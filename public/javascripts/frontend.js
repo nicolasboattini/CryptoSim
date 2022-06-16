@@ -1,4 +1,4 @@
-//global variable
+//Declaramos las variables básicas
 var graficaData;
 var criptoValue;
 
@@ -244,7 +244,7 @@ var datos = [3128.640780542462,
   1214.8662649132034,
   1230.3643353556051];
 
-//Change grafica dropdown display to selected item
+//Cambia el valor mostrado en el dropdown 'gráfica'
 $(document).ready(function(){
   $('#graficas_drop a').click(function(){
     $('#selectedGrafica').text($(this).text());
@@ -252,7 +252,7 @@ $(document).ready(function(){
     });
 });
 
-//Change criptomoneda dropdown display to selected item
+//Cambia el valor mostrado en el dropdown 'criptomoneda'
 $(document).ready(function(){
   $('#cripto_drop a').click(function(){
     $('#selectedCripto').text($(this).text());
@@ -261,6 +261,7 @@ $(document).ready(function(){
 });
 
 //---------------------------------------------
+//Esta función cambia los valores del gráfico
 function addData(datos) {
   var data1=[];var data2 = [];
   for (var k=0;k<120;k++){
@@ -276,6 +277,7 @@ function addData(datos) {
   myChart.update();
 }
 //---------------------------------------------
+//Esta función se encarga de predecir los valores correspondientes a los siguientes 120 días, teniendo en cuenta los 120 días anteriores
 function predict(datos){
   let sts = statistics(datos);
   for (var k = 120; k < 240; k++) {
@@ -288,6 +290,7 @@ function predict(datos){
  return datos;
 };
 //---------------------------------------------
+//Función estadística auxiliar que devuelve el v. minimo, máximo y el promedio
 function statistics(data){
   let max = -1; let min = Number.MAX_VALUE; let total = 0;
   for (var i = 0; i < data.length; i++) {
@@ -299,6 +302,7 @@ function statistics(data){
  return ret
 }
 //---------------------------------------------
+//Esta función toma los datos y calcula cuanto tiempo le llevará recuperar su inversión
 function calcular_meses(datos,tarjeta_consumo,costokwh,tarjeta_hasheo, tarjeta_costo, cmoneda){  
   var cdiario = tarjeta_consumo*costokwh*24;//costo diario de la electricidad
   var d = 0; var datavg = 0;var ganancia = -tarjeta_costo;
@@ -327,6 +331,7 @@ function calcular_meses(datos,tarjeta_consumo,costokwh,tarjeta_hasheo, tarjeta_c
   }
 }
 //---------------------------------------------
+//La siguiente función se activa en cuanto se apriete 'Simular'
 $(document).ready(function (){
   $('#simular').click(function(){
    

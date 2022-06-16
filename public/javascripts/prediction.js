@@ -1,10 +1,10 @@
-//1. Import coingecko-api
+//1. Importa coingecko-api
 const CoinGecko = require('coingecko-api');
 
-//2. Initiate the CoinGecko API Client
+//2. Inicia el CoinGecko API Client
 const CoinGeckoClient = new CoinGecko();
 
-//3. Make calls
+//Función de predicción usando API coingecko
 async function predict(cmoneda){
   const datos =[]
   const Objeto = {
@@ -66,25 +66,9 @@ function statistics(data){
  return ret
 }
 
-async function main(){
-  data3 = await predict('ethereum');
-  console.log(data3);
-  console.log(calcular_meses(data3, 0.409, 0.05,120, 2000,'ethereum'));//calcula el tiempo en meses que tarda
-  //El consumo esta en kw
-  //Costo kwh corrientes: 6,2905 = 0.05 usd
-  //Costo por hora = consumo*costokwh
-  //Costo por mes = chora*24*30 (asumiendo meses de 30 días)
-
-}
-
-
-predict('ethereum').then(p=>{
-  console.log(p[1]);
-});
-
 
 
 module.exports = {
-
+    //Espacio para exportar módulos en el futuro
 }
 
