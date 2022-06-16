@@ -221,11 +221,12 @@ $(document).ready(function (){
     var precio = graficaData.precio * cantidad;
     var consumo = graficaData.consumo * cantidad;
     var hasheo = graficaData.frecuenciadehasheo * cantidad;
-    datax = predict(datos);
-    addData(datax);    
+    //falta una forma de extraer los kwh, y la moneda elegida, y arreglar el tema de la api
+    data = predict(datos);
+    addData(data);    
     $('#consumo_res').text(consumo+' KW/H');    
     $('#hasheo_res').text(hasheo+' MH/s');
-    $('#res_meses').text(calcular_meses(datax,consumo, 0.05,hasheo, precio,'ethereum'));
+    $('#res_meses').text(calcular_meses(data,consumo, 0.05,hasheo, precio,'ethereum'));
   });
 });
 
