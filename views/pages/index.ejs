@@ -64,11 +64,11 @@
                 
                 <ul id="graficas_drop" class="dropdown-menu dropdown-menu-dark dropdown-menu-end dropdown-menu-lg-start">
                   <% tarjetaGrafica.forEach(function(t) { %>
-                    <li><a href="#" class="dropdown-item" href="#"
+                    <li><a id="t" href="#" class="dropdown-item"
                       data-id="<%= t.idTarjeta_Grafica %>" 
                       data-consumo="<%= t.consumo %>" 
                       data-frecuenciaDeHasheo="<%= t.frecuencia_de_hasheo %>"
-                      data-precio="<%= t.precio %>">
+                      data-precio="<%= t.precio %>" selected>
                       <%= t.modelo %> <%= t.serie %> <%= t.marca %></a></li>                 
                    <% }); %>
                 </ul>
@@ -110,8 +110,8 @@
         <!-- <h1>Gráfico</h1> -->
         <canvas id="myChart" class="w-100 my-4"></canvas>
           <button class="btn btn-primary my-3 rounded-4" type="submit">Tiempo de Armotización X Meses</button>
-        <h5 id="consumo_res">Consumo: (Watts)</h5>
-        <h5 id="frecuencia_res">Frecuencia de Hasheo: (MH/s)</h5>
+        <h5>Consumo:</h5><span id=consumo_res></span>
+        <h5>Frecuencia de Hasheo:</h5><span id=hasheo_res></span>
       </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
