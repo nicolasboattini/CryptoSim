@@ -62,7 +62,7 @@
                   aria-expanded="false">
                   <span id="selectedGrafica">Tarjetas Gráficas</span><span class="caret"></span></a>             
                 
-                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end dropdown-menu-lg-start">
+                <ul id="graficas_drop" class="dropdown-menu dropdown-menu-dark dropdown-menu-end dropdown-menu-lg-start">
                   <% tarjetaGrafica.forEach(function(t) { %>
                     <li><a href="#" class="dropdown-item" href="#"
                       data-id="<%= t.idTarjeta_Grafica %>" 
@@ -73,7 +73,7 @@
                    <% }); %>
                 </ul>
                 <div class="col-4">
-                  <input class="bg-primary text-white rounded-4 form-control" type="number" value="1"
+                  <input id="grafica_cantidad" class="bg-primary text-white rounded-4 form-control" type="number" value="1"
                     min="1" />
                 </div>
               </div>
@@ -88,7 +88,7 @@
                 id="dropdownMenuLink" data-bs-toggle="dropdown"
                   aria-expanded="false" data-bs-display="static">
                   <span id="selectedCripto">Criptomoneda</span><span class="caret"></span></a>
-                <ul class="dropdown-menu dropdown-menu-dark w-99" aria-labelledby="dropdownMenuButton2">                  
+                <ul id="cripto_drop" class="dropdown-menu dropdown-menu-dark w-99" aria-labelledby="dropdownMenuButton2">                  
                   <li><a class="dropdown-item " value="bitcoin" href="#">BTC</a></li>
                   <li><a class="dropdown-item " value="ethereum"href="#">ETH</a></li>
                   <li><a class="dropdown-item " value="tron"href="#">TRX</a></li>
@@ -103,15 +103,15 @@
             placeholder="Ingrese su Costo KW/h" />
         </div>
         <div class="text-center py-4">
-          <button class="btn btn-primary" id="simular" type="submit">Simular</button>
+          <button id="simular" class="btn btn-primary" type="submit">Simular</button>
         </div>
       </form>
       <div class="col-12 col-md-7">
         <!-- <h1>Gráfico</h1> -->
         <canvas id="myChart" class="w-100 my-4"></canvas>
           <button class="btn btn-primary my-3 rounded-4" type="submit">Tiempo de Armotización X Meses</button>
-        <h5>Consumo: (Watts)</h5>
-        <h5>Frecuencia de Hasheo: (MH/s)</h5>
+        <h5 id="consumo_res">Consumo: (Watts)</h5>
+        <h5 id="frecuencia_res">Frecuencia de Hasheo: (MH/s)</h5>
       </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -155,7 +155,7 @@
   </footer>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
   <script src="/javascripts/frontend.js"></script>

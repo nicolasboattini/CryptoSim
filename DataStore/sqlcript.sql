@@ -54,6 +54,12 @@ CREATE TABLE IF NOT EXISTS `cryptosim`.`Rig` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+
+--INSERT MODELS
+-- INSERT INTO cryptosim.tarjeta_grafica
+--`idTarjeta_Grafica`, `modelo`  `serie` `marca`  `consumo`  `frecuencia_de_hasheo`  `precio`
+
+
 INSERT INTO cryptosim.tarjeta_grafica VALUES(0,'NVIDIA','GeForce RTX','3090 Ti', 108.56,128,2000);
 INSERT INTO cryptosim.tarjeta_grafica VALUES(1, 'NVIDIA','GeForce RTX','3090', 108.56,119.0,1800);
 INSERT INTO cryptosim.tarjeta_grafica VALUES(2, 'NVIDIA','Quadro RTX','A5000', 108.56,117.0,2500);
