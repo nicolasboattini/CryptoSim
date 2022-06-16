@@ -100,27 +100,14 @@ document.getElementById("costoKW").addEventListener('keyup', function(e){e.targe
 $(document).ready(function (){
   $('#simular').click(function(){
    
-	  var graficaNombre = $('#selectedGrafica').text();  
-	  
-   console.log(graficaData);
-   
-   //console.log(graficaData.id);
-   //console.log(graficaData.frecuenciadehasheo);
-   //console.log(graficaData.precio);
-   //console.log(graficaData.consumo);
-   
-   var cantidad = parseInt($('#grafica_cantidad').val());
-   
-   console.log(cantidad);
-   
+    var graficaNombre = $('#selectedGrafica').text();   
+    var cantidad = parseInt($('#grafica_cantidad').val());
     var precio = graficaData.precio * cantidad;
     var consumo = graficaData.consumo * cantidad;
     var hasheo = graficaData.frecuenciadehasheo * cantidad;
     
     $('#consumo_res').text(consumo);    
     $('#hasheo_res').text(hasheo);
-  
-	
   });
 });
 
