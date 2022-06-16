@@ -101,8 +101,8 @@ $(document).ready(function (){
     var consumo = graficaData.consumo * cantidad;
     var hasheo = graficaData.frecuenciadehasheo * cantidad;
     
-    $('#consumo_res').text(consumo);    
-    $('#hasheo_res').text(hasheo);
+    $('#consumo_res').text(consumo + ' Wtts');    
+    $('#hasheo_res').text(hasheo + ' MH/s');
   });
 });
 
