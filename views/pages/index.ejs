@@ -91,8 +91,6 @@
                 <ul id="cripto_drop" class="dropdown-menu dropdown-menu-dark w-99" aria-labelledby="dropdownMenuButton2">                  
                   <li><a class="dropdown-item " value="bitcoin" href="#">BTC</a></li>
                   <li><a class="dropdown-item " value="ethereum"href="#">ETH</a></li>
-                  <li><a class="dropdown-item " value="tron"href="#">TRX</a></li>
-                  <li><a class="dropdown-item " value="cardano"href="#">ADA</a></li>                  
                 </ul>
               </div>
             </div>
@@ -100,7 +98,7 @@
         </div>
         <div class="form-group py-2">
           <input type="number" class="form-control btn-outline-primary" id="costoKW" min="0"
-            placeholder="Ingrese su Costo KW/h" />
+            placeholder="Ingrese su Costo KW/h (en USD)" />
         </div>
         <div class="text-center py-4">
           <button id="simular" class="btn btn-primary" type="submit">Simular</button>
@@ -109,7 +107,7 @@
       <div class="col-12 col-md-7">
         <!-- <h1>Gráfico</h1> -->
         <canvas id="myChart" class="w-100 my-4"></canvas>
-          <button class="btn btn-primary my-3 rounded-4" type="submit">Tiempo de Armotización X Meses</button>
+        <button class="btn btn-primary my-3 rounded-4" type="submit">Tiempo de Armotización X Meses</button>
         <h5>Consumo:</h5><span id=consumo_res></span>
         <h5>Frecuencia de Hasheo:</h5><span id=hasheo_res></span>
       </div>
@@ -148,7 +146,7 @@
   </div>
 
   <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <p class="col-md-4 mb-0 text-muted">@The Another Ones</p>
+    <p class="col-md-4 mb-0 text-muted">@CryptoSim</p>
     <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <svg class="bi me-2" width="40" height="32"></svg>
     </a>

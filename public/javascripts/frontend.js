@@ -26,52 +26,47 @@ document.getElementById("costoKW").addEventListener('click', func);
 document.getElementById("costoKW").addEventListener('keyup', function(e){e.target.click()});
 
 
-/*Gráfico start*/
-    var xyValues = [89,24,65,45,NaN,NaN];
-    var xyValues2 = [NaN,NaN,NaN,45,24,46];
-    var labels= []
-    for (i=0;i<6;i++){
-      labels[i]=i-3+' dias';
-    }
-    const ctx = document.getElementById("myChart").getContext("2d")
-    
-    const myChart = new Chart(ctx, {
-      type: "line",
-      data: {
-        datasets: [
-          {
-            pointRadius: 4,
-            pointBackgroundColor: "rgb(0,0,255)",
-            data: xyValues,
+    //Gráfico
+
+    function Grafico(datos){
+      var xyValues = [89,24,65,45,NaN,NaN];
+        var xyValues2 = [NaN,NaN,NaN,45,24,46];
+        var labels= []
+        for (i=0;i<240;i++){
+          labels[i]=i-120+' dias';
+        }
+        const ctx = document.getElementById("myChart").getContext("2d")
+        
+        const myChart = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: labels,
+            datasets: [{
+              label: 'Precio Pasado',
+              data: datos,
+              fill: true,
+              borderColor: 'rgb(255, 35, 1)',
+              tension: 0.1
+            },{
+              label: 'Precio Futuro',
+              data: datos,
+              fill: true,
+              borderColor: 'rgb(1, 35, 1)',
+              tension: 0.1
+            }],
           },
-        ],
-        labels: labels,
-        datasets: [{
-          label: 'Precio Pasado',
-          data: xyValues,
-          fill: true,
-          borderColor: 'rgb(255, 35, 1)',
-          tension: 0.1
-        },{
-          label: 'Precio Futuro',
-          data: xyValues2,
-          fill: true,
-          borderColor: 'rgb(1, 35, 1)',
-          tension: 0.1
-        }],
-      },
-      options: {
-        responsive:true,
-        legend: { display: false },
-        scales: {
-          xAxes: [{ ticks: { min: 40, max: 160 } }],
-          yAxes: [{ ticks: { min: 6, max: 16 } }],
-          xAxes: [{ ticks: { min: -10, max: 120 } }],
-          yAxes: [{ ticks: { min: 0, max: 90 } }],
-        },
-      },
-    });
-/*Grafico End*/
+          options: {
+            responsive:true,
+            legend: { display: false },
+            scales: {
+    
+              xAxes: [{ ticks: { maxTicksLimit: 8.1 } }],
+              yAxes: [{ ticks: { min: 0, max: 60000 } }],
+            },
+          },
+        });
+    }
+    Grafico();
 
 /*$(document).ready(function (){
   $('#simular').click(function(){
