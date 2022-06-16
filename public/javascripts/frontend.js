@@ -73,30 +73,6 @@ document.getElementById("costoKW").addEventListener('keyup', function(e){e.targe
     });
 /*Grafico End*/
 
-/*$(document).ready(function (){
-  $('#simular').click(function(){
-    /*var graficaId = $('#graficas_drop option:selected').data('id');
-    var graficaHasheo = $('#graficas_drop option:selected').data('frecuenciaDeHasheo');
-    var graficaPrecio = $('#graficas_drop option:selected').data('precio');
-    var graficaConsumo = $('#graficas_drop option:selected').data('consumo');
-    var graficaData= $('#graficas_drop option:selected').data();
-	
-    console.log(graficaData);
-    
-    console.log(graficaData.id);
-    console.log(graficaData.frecuenciaDeHasheo);
-    console.log(graficaData.precio); 
-    console.log(graficaData.consumo);
-    var cantidad = $('#grafica_cantidad').val();
-    //console.log('%d, %d, %d, %d, %d', graficaId, graficaHasheo, graficaPrecio, graficaConsumo, cantidad);
-    var precio = graficaPrecio * cantidad;
-    var consumo = graficaConsumo * cantidad;
-    var hasheo = graficaHasheo * cantidad;
-    $('#consumo_res').text(consumo);    
-    $('#hasheo_res').text(hasheo);
-  });
-});*/
-
 $(document).ready(function (){
   $('#simular').click(function(){
    
@@ -106,8 +82,8 @@ $(document).ready(function (){
     var consumo = graficaData.consumo * cantidad;
     var hasheo = graficaData.frecuenciadehasheo * cantidad;
     
-    $('#consumo_res').text(consumo);    
-    $('#hasheo_res').text(hasheo);
+    $('#consumo_res').text(consumo + ' Wtts');    
+    $('#hasheo_res').text(hasheo + ' MH/s');
   });
 });
 
