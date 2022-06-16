@@ -69,7 +69,7 @@
                       data-consumo="<%= t.consumo %>" 
                       data-frecuenciaDeHasheo="<%= t.frecuencia_de_hasheo %>"
                       data-precio="<%= t.precio %>" selected>
-                      <%= t.modelo %> <%= t.serie %> <%= t.marca %></a></li>                 
+                      <%= t.modelo %> <%= t.serie %> <%= t.marca %> | $<%= t.precio %></a></li>                 
                    <% }); %>
                 </ul>
                 <div class="col-4">
@@ -90,14 +90,14 @@
                   <span id="selectedCripto">Criptomoneda</span><span class="caret"></span></a>
                 <ul id="cripto_drop" class="dropdown-menu dropdown-menu-dark w-99" aria-labelledby="dropdownMenuButton2">                  
                   <li><a class="dropdown-item " value="bitcoin" href="#">BTC</a></li>
-                  <li><a class="dropdown-item " value="ethereum"href="#">ETH</a></li>
+                  <li><a class="dropdown-item " value="ethereum" href="#">ETH</a></li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
         <div class="form-group py-2">
-          <input type="number" class="form-control btn-outline-primary" id="costoKW" min="0"
+          <input type="text" class="form-control btn-outline-primary" id="costoKW" min="0"
             placeholder="Ingrese su Costo KW/h (en USD)" />
         </div>
         <div class="text-center py-4">
@@ -106,9 +106,18 @@
       </form>
       <div class="col-12 col-md-7">
         <canvas id="myChart" class="w-100 my-4"></canvas>
-        <button class="btn btn-primary my-3 rounded-4" type="submit">Tiempo de Amortización:  <span id=res_meses></span></button>
-        <h5>Consumo:</h5><span id=consumo_res></span>
-        <h5>Frecuencia de Hasheo:</h5><span id=hasheo_res></span>
+        <button class="btn btn-primary my-3 rounded-4" type="submit" disabled>Tiempo de Amortización:  <span id=res_meses></span></button>
+        <div class="row">
+          <div class="col-7"><h5>Coste Energético:</h5><span id=consumo_res></span></div>
+          
+          <div class="col-5"><h5>Precio:</h5><span id=precio_res></span></div>
+        </div>
+        <div class="row">
+          <div class="col-7"><h5>Frecuencia de Hasheo:</h5><span id=hasheo_res></span></div>
+          
+          <div class="col-5"><h5>Consumo (w):</h5><span id=watt_res></span></div>
+        </div>
+        </div>
       </div>
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -1,6 +1,6 @@
 //global variable
 var graficaData;
-
+var criptoValue;
 //ARREGLAZO
 datos = [3128.640780542462,
   2881.613122162859,
@@ -135,17 +135,18 @@ $(document).ready(function(){
 $(document).ready(function(){
   $('#cripto_drop a').click(function(){
     $('#selectedCripto').text($(this).text());
+    criptoValue = $(this).value();
     });
 });
 
 //Set costoKw to placeholder when value is 0
-function func(e) {
+/*function func(e) {
   if(e.target.value==e.target.getAttribute("min")){
     e.target.value="";
   }
 }
 document.getElementById("costoKW").addEventListener('click', func);
-document.getElementById("costoKW").addEventListener('keyup', function(e){e.target.click()});
+document.getElementById("costoKW").addEventListener('keyup', function(e){e.target.click()});*/
 //---------------------------------------------
 function addData(datos) {
   var data1=[];var data2 = [];
@@ -222,10 +223,14 @@ $(document).ready(function (){
     var consumo = graficaData.consumo * cantidad;
     var hasheo = graficaData.frecuenciadehasheo * cantidad;
     //falta una forma de extraer los kwh, y la moneda elegida, y arreglar el tema de la api
+    var costokwh = parseFloat($('#costoKW').val()).toFixed(4);
+    var costeenergetico = consumo * costokwh;
     data = predict(datos);
     addData(data);    
-    $('#consumo_res').text(consumo+' KW/H');    
+    $('#consumo_res').text(costeenergetico.toFixed(4)+' USD/H');    
     $('#hasheo_res').text(hasheo+' MH/s');
+    $('#precio_res').text(precio+' $');
+    $('#watt_res').text((consumo*1000).toFixed(1)+' W');
     $('#res_meses').text(calcular_meses(data,consumo, 0.05,hasheo, precio,'ethereum'));
   });
 });
