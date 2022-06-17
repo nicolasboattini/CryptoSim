@@ -1,20 +1,21 @@
-//1. Import coingecko-api
+//1. Importa coingecko-api
 const CoinGecko = require('coingecko-api');
 
-//2. Initiate the CoinGecko API Client
+//2. Inicia el CoinGecko API Client
 const CoinGeckoClient = new CoinGecko();
 
-//3. Make calls
-var predict = async() => {
+//Función de predicción usando API coingecko
+async function predict(cmoneda){
   const datos =[]
   const Objeto = {
     days: '120',
     vs_currency: 'usd'
   }
-  let data2 = await CoinGeckoClient.coins.fetchMarketChart('bitcoin', Objeto);
+  let data2 = await CoinGeckoClient.coins.fetchMarketChart(cmoneda, Objeto);
   for (var i = 0; i < 120; i++) {
     datos[i]= data2.data.prices[i][1];
  }
+ datos.forEach(e => console.log(e+','));
  let sts = statistics(datos);
  for (var k = 120; k < 240; k++) {
   if(datos[k-2]>datos[k-1]){
@@ -26,12 +27,32 @@ var predict = async() => {
  return datos;
 };
 
-async function calcular_meses(datos,tarjeta_consumo,costokwh,tarjeta_hasheo){
-
-
-
-
-
+function calcular_meses(datos,tarjeta_consumo,costokwh,tarjeta_hasheo, tarjeta_costo, cmoneda){  
+    var cdiario = tarjeta_consumo*costokwh*24;//costo diario de la electricidad
+    var d = 0; var datavg = 0;var ganancia = -tarjeta_costo;
+    if (cmoneda =='bitcoin'){
+        q=tarjeta_hasheo/240963855400;
+    }else{
+        q=tarjeta_hasheo/67476.3833;
+    }
+    
+    for(var k=120;k<240;k++){
+      datavg = datavg + datos[k];
+    }
+    datavg = datavg/120;
+    do{
+      d++;
+      if (d<120){
+        ganancia = ganancia +((q*datos[d+120])-cdiario);
+      }else{
+        ganancia = ganancia +(q*datavg-cdiario);
+      }
+    }while(ganancia<0 && d < 3600);
+    if (d<3600){
+      return d/30+' meses';
+    }else{
+      return 'No rentable'
+    }
 }
 
 function statistics(data){
@@ -45,11 +66,9 @@ function statistics(data){
  return ret
 }
 
-async function main(){
-  console.log(await predict());
-  //console.log(await calcular_meses(datos, tarjeta.consumo, costokwh,tarjeta.hasheo));//calcula el tiempo en meses que tarda
 
+
+module.exports = {
+    //Espacio para exportar módulos en el futuro
 }
-
-main();
 

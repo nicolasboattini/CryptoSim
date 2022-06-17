@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"></html>
+<html lang="es">
+
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width-device-width, initial-scale=1">
+  <title>CryptoSim</title>  
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/custombtstrp.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+</head>
+
+<body>  
+  
+  <header class="py-3 d-flex text-center">
+
+    <div class=" col-10">
+
+      <h1 style="margin-left: 130px;"> CryptoSim</h1>
+    </div>
+
+    <div class="col-1 align-self-center">
+      <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        class="btn btn-primary btn-sm py-0 mt-2 rounded-4"><label ></label><span class="p-0 mt-1 material-symbols-outlined"
+          style="font-size: 30px;">
+          account_circle
+        </span></button>
+    </div>
+
+  </header>
+    
+  <div id="caja" class="container">
+    <div class="row ">       
+      <form class="col-12 col-md-5">
+        <div class="form-group">
+          <div class="row justify-content-evenly py-4">
+            <label class="col-6 col-md-2"><input class="form-check-input mt-0" type="checkbox"
+                value="nvidia" />Nvidia</label>
+            <label class="col-6 col-md-2"><input class="form-check-input mt-0" type="checkbox"
+                value="amd" />AMD</label>
+            <label class="col-6 col-md-2"><input class="form-check-input mt-0" type="checkbox"
+                value="gtx" />GTX</label>
+            <label class="col-6 col-md-2"><input class="form-check-input mt-0" type="checkbox"
+                value="rtx" />RTX</label>
+            <label class="col-6 col-md-2"><input class="form-check-input mt-0" type="checkbox"
+                value="gt" />GT</label>
+            <label class="col-6 col-md-2"><input class="form-check-input mt-0" type="checkbox"
+                value="rx" />RX</label>
+          </div>          
+          <div class="row py-4">
+            <div class="col-6 ">              
+              <div class="dropdown btn-group w-100 text-start">
+                <a class="btn btn-primary dropdown-toggle  rounded-4" href="#" role="button" 
+                id="dropdownMenuLink" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <span id="selectedGrafica">Tarjetas Gráficas</span><span class="caret"></span></a>             
+                
+                <ul id="graficas_drop" class="dropdown-menu dropdown-menu-dark dropdown-menu-end dropdown-menu-lg-start">
+                  <% tarjetaGrafica.forEach(function(t) { %>
+                    <li><a id="t" href="#" class="dropdown-item"
+                      data-id="<%= t.idTarjeta_Grafica %>" 
+                      data-consumo="<%= t.consumo %>" 
+                      data-frecuenciaDeHasheo="<%= t.frecuencia_de_hasheo %>"
+                      data-precio="<%= t.precio %>" selected>
+                      <%= t.modelo %> <%= t.serie %> <%= t.marca %> | $<%= t.precio %></a></li>                 
+                   <% }); %>
+                </ul>
+                <div class="col-4">
+                  <input id="grafica_cantidad" class="bg-primary text-white rounded-4 form-control" type="number" value="1"
+                    min="1" />
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              
+            </div>
+            <div class="col-6 py-4">
+              
+              <div class="btn-group w-100 text-start">
+                <a class="btn btn-primary dropdown-toggle  rounded-4" href="#" role="button" 
+                id="dropdownMenuLink" data-bs-toggle="dropdown"
+                  aria-expanded="false" data-bs-display="static">
+                  <span id="selectedCripto">Criptomoneda</span><span class="caret"></span></a>
+                <ul id="cripto_drop" class="dropdown-menu dropdown-menu-dark w-99" aria-labelledby="dropdownMenuButton2">                  
+                  <li><a class="dropdown-item " data-value="bitcoin" href="#">BTC</a></li>
+                  <li><a class="dropdown-item " data-value="ethereum" href="#">ETH</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group py-2">
+          <input type="text" class="form-control btn-outline-primary" id="costoKW" min="0"
+            placeholder="Ingrese su Costo KW/h (en USD)" />
+        </div>
+        <div class="text-center py-4">
+          <button id="simular" class="btn btn-primary" type="submit">Simular</button>
+        </div>
+      </form>
+      <div class="col-12 col-md-7">
+        <canvas id="myChart" class="w-100 my-4"></canvas>
+        <button class="btn btn-primary my-3 rounded-4" type="submit" disabled>Tiempo de Amortización:  <span id=res_meses></span></button>
+        <div class="row">
+          <div class="col-7"><h5>Coste Energético:</h5><span id=consumo_res></span></div>
+          
+          <div class="col-5"><h5>Precio:</h5><span id=precio_res></span></div>
+        </div>
+        <div class="row">
+          <div class="col-7"><h5>Frecuencia de Hasheo:</h5><span id=hasheo_res></span></div>
+          
+          <div class="col-5"><h5>Consumo (w):</h5><span id=watt_res></span></div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4>LOGIN</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="w-75 mx-auto">
+              <button type="button" class="btn btn-outline-dark rounded-5 w-100 my-3">Login with Google</button>
+              <p class="text-center">or</p>
+              <div class="my-5">
+                <input placeholder="Email" type="email" class="form-control rounded-5" id="InputEmail"
+                  aria-describedby="emailHelp">
+                </div>
+              <div class="my-5">
+                <input placeholder="Password" type="password" class="form-control rounded-5" id="InputPassword">
+              </div>
+              <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-dark ">Login</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer row text-center">
+            <a href="" class="py-1">Forgot password?</a>
+            <p class="py-1">No account? <a href="">Create one</a></p>
+            <!-- <button type="button" class="btn btn-outline-dark">Dark</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <p class="col-md-4 mb-0 text-dark">@CryptoSim</p>
+    <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"></svg>
+    </a>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="  crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+  <script src="/javascripts/frontend.js"></script>
+  <script src="/javascripts/graphic.js"></script>
+  
+</body>
+
+</html>
