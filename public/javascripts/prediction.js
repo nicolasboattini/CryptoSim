@@ -69,6 +69,7 @@ function statistics(data){
 
 
 module.exports = {
-    //Espacio para exportar módulos en el futuro
+    calcular_meses,
+    predict
 }
 

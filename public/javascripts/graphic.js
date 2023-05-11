@@ -44,4 +44,24 @@ const myChart = new Chart(ctx, {
   },
 });
 
+//---------------------------------------------
+//Esta función cambia los valores del gráfico
+function addData(datos) {
+  var data1=[];var data2 = [];
+  for (var k=0;k<120;k++){
+    data1[k]=datos[k];
+    data2[k]= NaN;
+  }
+  for (var m=120;m<240;m++){
+    data1[m]=NaN;
+    data2[m]= datos[m];
+  }
+  myChart.data.datasets[0].data = data1;
+  myChart.data.datasets[1].data = data2;
+  myChart.update();
+}
+
+module.exports = {
+  addData
+}
 
